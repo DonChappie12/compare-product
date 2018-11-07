@@ -1,0 +1,11 @@
+.Header{
+    border-bottom: solid black;
+}
+
+h2, h4{
+    display: inline-block;
+}
+
+h4{
+    float: right;
+}

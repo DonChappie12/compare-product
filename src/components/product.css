@@ -1,0 +1,53 @@
+.Product{
+    display: inline-block;
+    width: 25%;
+}
+
+.Hover img{
+    height: 300px;
+    max-height: 100%;
+    width: 100%;
+    transition: .5s ease;
+}
+
+.Hover{
+    position: relative;
+}
+
+.Btn{
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 7px #999;
+    outline: none;
+}
+
+.Btn:hover{
+    background-color: #d1d1d1;
+}
+
+.Btn:active {
+    background-color: #a5a5a5;
+    box-shadow: 0 4px #666;
+    transform: translateY(4px);
+}
+
+.Middle{
+    transition: .5s ease;
+    opacity: 0;
+}
+
+.Hover:hover img{
+    opacity: 0.3;
+    /* background-color: #02547D; */
+}
+
+.Hover:hover .Middle{
+    opacity: 1;
+}
