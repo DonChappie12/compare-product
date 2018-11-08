@@ -19,15 +19,29 @@ class App extends Component {
         {id: 2, name: "Canon 70D DSLR", price: 1650, shortDescrip: "20.2MP", description: "sjbvosubav", manufactured: "Tokyo, Japan", condition: "Used", image: canon},
         {id: 3, name: "MacBook Air", price: 1400, shortDescrip: "13-inch", description: "ouadbsvosuABVAOLBIDF", manufactured: "Cupertino, CA", condition: "Refurbished", image: macbook}
       ],
-      compareArr: [],
-      nextId: 0
+        compareArr: [],
+        nextId: 0
     }
+    this.addToCompare = this.addToCompare.bind(this);
   }
 
-  //   comparableProd(){
-  //     let compareArr = this.state.compareArr.slice(products);
-  //     compareArr.push({id: nextId, prod: products})
-  // }
+  addToCompare(prod, compared){
+    let pr = this.state.compareArr;
+    if(compared === false){
+      pr.push(prod)
+      this.setState({
+        compareArr: pr
+      })
+    }
+    
+    for(var i=0; i<pr.length; i++){
+      if(prod.id === pr[i].id){
+        this.setState({
+          compareArr: this.state.compareArr.filter((prod)=> prod.id !== this.state.compareArr[i].id)
+        })
+      }
+    }
+  }
   
   render() {
     return (
@@ -36,11 +50,11 @@ class App extends Component {
         <ul>
           {
             this.state.products.map((product)=>{
-              return <Product product={product} key={product.id} />
+              return <Product onClick={this.addToCompare} product={product} key={product.id} />
             })
           }
         </ul>
-        <ComparingProd />
+        <ComparingProd products={this.state.products} compare={this.state.compareArr}/>
       </div>
     );
   }

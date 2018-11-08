@@ -1,7 +1,5 @@
 import React from 'react';
 import './product.css';
-// import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
-
 
 export default class Product extends React.Component{
     constructor(props){
@@ -9,42 +7,25 @@ export default class Product extends React.Component{
         this.state={
             isCompare: false,
         }
-        this.handleClick = this.handleClick.bind(this)
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(){
+    handleClick(product){
         this.setState(state => ({
             isCompare: !state.isCompare
         }))
+        const prod = product;
+        this.props.onClick(prod, this.state.isCompare)
     }
     
     render(){
-        // const prodCompare = this.state.compare;
-        // let button;
-        // if(prodCompare === false){
-        //     button = <button className="Btn" onClick={() => this.handleClick()}>Compare</button>
-        // }else{
-        //     button = <button className="Btn" onClick={() => this.handleClick()}>Remove</button>
-        // }
         return (
             <div className="Product">
-                {/* <Card>
-                    <div className="cardImg">
-                    </div>
-                    <CardImg src={img} alt={img} />
-                    <CardBody>
-                        <CardTitle>{this.props.product.name}</CardTitle>
-                        <CardSubtitle>${this.props.product.price}</CardSubtitle>
-                        <CardText>{this.props.product.shortDescrip}</CardText>
-                        <Button>Compare</Button>
-                    </CardBody>
-                </Card> */}
                 <div className="Hover">
                     <img src={this.props.product.image} alt={this.props.product.image}/>
                     <div className="Middle">
                         <div className="hoverBtn">
-                            {/* {button} */}
-                            <button className="Btn" onClick={this.handleClick}>{this.state.isCompare ? 'Remove' : 'Compare'}</button>
+                            <button className="Btn" onClick={() => this.handleClick(this.props.product)}>{this.state.isCompare ? 'Remove' : 'Compare'}</button>
                         </div>
                     </div>
                 </div>
@@ -52,7 +33,6 @@ export default class Product extends React.Component{
                 <p>{this.props.product.shortDescrip}</p>
                 <p>${this.props.product.price}</p>
                 <p>{this.props.product.condition}</p>
-                {/* <button>More info</button> */}
             </div>
         )
     }
