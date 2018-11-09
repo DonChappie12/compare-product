@@ -8,13 +8,15 @@
     max-height: 100%;
     width: 100%;
     transition: .5s ease;
+    background-color: #02547D;
 }
 
 .Hover{
     position: relative;
+    /* background-color: #02547D; */ /****? Only place that will work apperantly ****/
 }
 
-.Btn{
+button{
     position: absolute;
     top: 40%;
     left: 35%;
@@ -28,11 +30,11 @@
     outline: none;
 }
 
-.Btn:hover{
+button:hover{
     background-color: #d1d1d1;
 }
 
-.Btn:active {
+button:active {
     background-color: #a5a5a5;
     box-shadow: 0 4px #666;
     transform: translateY(4px);
@@ -41,13 +43,21 @@
 .Middle{
     transition: .5s ease;
     opacity: 0;
+    background-color: #02547D;
 }
 
-.Hover:hover img{
+.Hover:hover img, .Hover:focus{
     opacity: 0.4;
-    /* background-color: #02547D; */
+    /* background-color: #02547D;
+    color: #02547D; */
 }
 
 .Hover:hover .Middle{
     opacity: 1;
+    /* background-color: #02547D; */
+}
+
+.Stays img{
+    background-color: #02547D;
+    opacity: 0.4;
 }

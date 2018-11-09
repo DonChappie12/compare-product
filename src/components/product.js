@@ -1,6 +1,10 @@
 import React from 'react';
 import './product.css';
 
+// const cssClicked = {
+
+// }
+
 export default class Product extends React.Component{
     constructor(props){
         super(props);
@@ -22,14 +26,16 @@ export default class Product extends React.Component{
         return (
             <div className="Product">
                 <div className="Hover">
-                    <img src={this.props.product.image} alt={this.props.product.image}/>
-                    <div className="Middle">
-                        <div className="hoverBtn">
-                            <button className="Btn" onClick={() => this.handleClick(this.props.product)}>{this.state.isCompare ? 'Remove' : 'Compare'}</button>
+                    <div className={this.state.isCompare ? "Stays" : "Hover"}>
+                        <img src={this.props.product.image} alt={this.props.product.image}/>
+                        <div className="Middle">
+                            <div className="hoverBtn">
+                                <button className="Btn" onClick={() => this.handleClick(this.props.product)}>{this.state.isCompare ? 'Remove' : 'Compare'}</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <p>{this.props.product.name}</p>
+                <h3>{this.props.product.name}</h3>
                 <p>{this.props.product.shortDescrip}</p>
                 <p>${this.props.product.price}</p>
                 <p>{this.props.product.condition}</p>
