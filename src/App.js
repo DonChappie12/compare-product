@@ -26,21 +26,26 @@ class App extends Component {
   }
 
   addToCompare(prod, compared){
+
     let pr = this.state.compareArr;
     if(compared === false){
       pr.push(prod)
       this.setState({
         compareArr: pr
       })
-    }
-    
-    for(var i=0; i<pr.length; i++){
-      if(prod.id === pr[i].id){
-        this.setState({
-          compareArr: this.state.compareArr.filter((prod)=> prod.id !== this.state.compareArr[i].id)
-        })
+    }else{
+      for(var i=0; i<pr.length; i++){
+        if(prod.id === pr[i].id){
+          pr.splice(i,1)
+          this.setState({
+            // compareArr: this.state.compareArr.splice(i, 1)
+            compareArr: pr
+          })
+        }
       }
     }
+
+    console.log(pr)
   }
   
   render() {
